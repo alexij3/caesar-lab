@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <TextArea fx:id="initialText" layoutX="38.0" layoutY="86.0" prefHeight="200.0" prefWidth="577.0" />
+      <TextArea fx:id="encryptedText" editable="false" layoutX="38.0" layoutY="389.0" prefHeight="200.0" prefWidth="577.0" />
+      <Button fx:id="encryptBtn" layoutX="367.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#encryptText" prefHeight="31.0" prefWidth="194.0" text="Encrypt and save to file">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="1239.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="openTextFileItem" mnemonicParsing="false" onAction="#openTextFile" text="Open file with text" />
+                  <MenuItem fx:id="openEncFileItem" mnemonicParsing="false" onAction="#openEncFile" text="Open file with encrypted text" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button fx:id="decryptAllVariantsBtn" layoutX="105.0" layoutY="603.0" mnemonicParsing="false" onMouseClicked="#decryptAllVariants" prefHeight="31.0" prefWidth="183.0" text="Decrypt (all variants)">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+       <Spinner fx:id="cipherStepInput" editable="true" layoutX="167.0" layoutY="298.0" prefHeight="25.0" prefWidth="149.0">
+           <valueFactory>
+               <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="0" max="999" min="-999" />
+           </valueFactory>
+       </Spinner>
+      <Label layoutX="128.0" layoutY="300.0" text="Step">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="decryptFrequencyAnalysisBtn" layoutX="329.0" layoutY="603.0" mnemonicParsing="false" onMouseClicked="#decryptWithFreqAnalysis" text="Decrypt with frequency analysis">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="292.0" layoutY="44.0" text="Plain text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="262.0" layoutY="342.0" text="Encrypted text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="decryptedTextArea" layoutX="628.0" layoutY="85.0" prefHeight="505.0" prefWidth="577.0" />
+      <Label layoutX="835.0" layoutY="41.0" text="Decrypted text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
