@@ -119,6 +119,11 @@ public class Controller {
     @FXML
     void initialize() {
         this.fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text", "*.txt"));
+        this.cipherStepInput.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                this.cipherStepInput.increment(0); // won't change value, but will commit editor
+            }
+        });
     }
 
     private void saveTextToFile(List<String> content, File file) {

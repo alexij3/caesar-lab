@@ -13,8 +13,8 @@
 
 <Pane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <TextArea fx:id="initialText" layoutX="38.0" layoutY="86.0" prefHeight="200.0" prefWidth="577.0" />
-      <TextArea fx:id="encryptedText" editable="false" layoutX="38.0" layoutY="389.0" prefHeight="200.0" prefWidth="577.0" />
+      <TextArea fx:id="initialText" layoutX="38.0" layoutY="86.0" prefHeight="200.0" prefWidth="577.0" wrapText="true" />
+      <TextArea fx:id="encryptedText" layoutX="38.0" layoutY="389.0" prefHeight="200.0" prefWidth="577.0" wrapText="true" />
       <Button fx:id="encryptBtn" layoutX="367.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#encryptText" prefHeight="31.0" prefWidth="194.0" text="Encrypt and save to file">
          <font>
             <Font size="15.0" />
@@ -60,7 +60,7 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <TextArea fx:id="decryptedTextArea" layoutX="628.0" layoutY="85.0" prefHeight="505.0" prefWidth="577.0" />
+      <TextArea fx:id="decryptedTextArea" layoutX="628.0" layoutY="85.0" prefHeight="505.0" prefWidth="577.0" wrapText="true" />
       <Label layoutX="835.0" layoutY="41.0" text="Decrypted text">
          <font>
             <Font size="26.0" />
