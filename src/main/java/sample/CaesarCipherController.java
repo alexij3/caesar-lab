@@ -8,6 +8,8 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import sample.cipher.CaesarCipher;
+import sample.cipher.Cipher;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,7 +22,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Controller {
+public class CaesarCipherController {
 
     private static final String alphabetChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
@@ -56,29 +58,18 @@ public class Controller {
     @FXML
     void decryptAllVariants(MouseEvent event) {
         Cipher cipher = new CaesarCipher();
-        FrequencyAnalysis frequencyAnalysis = new FrequencyAnalysis(cipher);
         Alphabet alphabet = new Alphabet('E', alphabetChars);
-        frequencyAnalysis.decrypt(this.encryptedText.getText(), alphabet);
+        ((CaesarCipher) cipher).setAlphabet(alphabet);
 
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        List<String> decryptedMessages = cipher.decrypt(this.encryptedText.getText(), alphabet);
-        for (String decryptedMessage:  decryptedMessages) {
-            stringBuilder.append(decryptedMessage);
-            stringBuilder.append("\n\n");
-
-        }
-
-        this.decryptedTextArea.setText(stringBuilder.toString());
+        String decryptedMessage = cipher.decrypt(this.encryptedText.getText());
+        this.decryptedTextArea.setText(decryptedMessage);
     }
 
     @FXML
     void decryptWithFreqAnalysis(MouseEvent event) {
         Cipher cipher = new CaesarCipher();
-        FrequencyAnalysis frequencyAnalysis = new FrequencyAnalysis(cipher);
         Alphabet alphabet = new Alphabet('E', alphabetChars);
-        frequencyAnalysis.decrypt(this.encryptedText.getText(), alphabet);
+        FrequencyAnalysis frequencyAnalysis = new FrequencyAnalysis(cipher);
 
         this.decryptedTextArea.setText(frequencyAnalysis.decrypt(this.encryptedText.getText(), alphabet));
     }
@@ -91,7 +82,9 @@ public class Controller {
         Cipher caesar = new CaesarCipher();
 
         Alphabet alphabet = new Alphabet('E', alphabetChars);
-        String encryptedText = caesar.encrypt(initialText, alphabet, step);
+        ((CaesarCipher) caesar).setStep(step);
+        ((CaesarCipher) caesar).setAlphabet(alphabet);
+        String encryptedText = caesar.encrypt(initialText);
         this.encryptedText.setText(encryptedText);
 
         File file = this.fileChooser.showSaveDialog(openEncFileItem.getParentPopup().getScene().getWindow());
@@ -136,7 +129,7 @@ public class Controller {
             }
             writer.close();
         } catch (IOException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CaesarCipherController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -154,14 +147,14 @@ public class Controller {
             }
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CaesarCipherController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CaesarCipherController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 bufferedReader.close();
             } catch (IOException ex) {
-                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CaesarCipherController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

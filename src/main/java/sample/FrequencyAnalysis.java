@@ -1,5 +1,7 @@
 package sample;
 
+import sample.cipher.Cipher;
+
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -28,6 +30,6 @@ public class FrequencyAnalysis {
 
         int step = alphabetChars.indexOf(theMostFrequentAlphabetChar) - alphabetChars.indexOf(encryptedStringMostFrequentChar);
 
-        return cipher.decrypt(encryptedString, alphabet, step);
+        return cipher.decryptOne(encryptedString, alphabet, step);
     };
 }

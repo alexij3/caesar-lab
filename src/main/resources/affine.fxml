@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CaesarCipherController">
+<Pane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AffineCipherController">
    <children>
       <TextArea fx:id="initialText" layoutX="38.0" layoutY="86.0" prefHeight="200.0" prefWidth="577.0" wrapText="true" />
       <TextArea fx:id="encryptedText" layoutX="38.0" layoutY="389.0" prefHeight="200.0" prefWidth="577.0" wrapText="true" />
@@ -20,7 +20,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="1239.0">
+      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="1219.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -30,26 +30,21 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="decryptAllVariantsBtn" layoutX="105.0" layoutY="603.0" mnemonicParsing="false" onMouseClicked="#decryptAllVariants" prefHeight="31.0" prefWidth="183.0" text="Decrypt (all variants)">
+      <Button fx:id="decryptBtn" layoutX="218.0" layoutY="607.0" mnemonicParsing="false" onMouseClicked="#decrypt" prefHeight="31.0" prefWidth="183.0" text="Decrypt">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-       <Spinner fx:id="cipherStepInput" editable="true" layoutX="167.0" layoutY="298.0" prefHeight="25.0" prefWidth="149.0">
+       <Spinner fx:id="affineCipherA" editable="true" layoutX="167.0" layoutY="298.0" prefHeight="25.0" prefWidth="70.0">
            <valueFactory>
                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="0" max="999" min="-999" />
            </valueFactory>
        </Spinner>
-      <Label layoutX="128.0" layoutY="300.0" text="Step">
+      <Label layoutX="151.0" layoutY="300.0" text="A">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="decryptFrequencyAnalysisBtn" layoutX="329.0" layoutY="603.0" mnemonicParsing="false" onMouseClicked="#decryptWithFreqAnalysis" text="Decrypt with frequency analysis">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
       <Label layoutX="292.0" layoutY="44.0" text="Plain text">
          <font>
             <Font size="26.0" />
@@ -64,6 +59,16 @@
       <Label layoutX="835.0" layoutY="41.0" text="Decrypted text">
          <font>
             <Font size="26.0" />
+         </font>
+      </Label>
+      <Spinner fx:id="affineCipherB" editable="true" layoutX="274.0" layoutY="298.0" prefHeight="25.0" prefWidth="70.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="0" max="999" min="-999" />
+         </valueFactory>
+      </Spinner>
+      <Label layoutX="258.0" layoutY="300.0" text="B">
+         <font>
+            <Font size="15.0" />
          </font>
       </Label>
    </children>
