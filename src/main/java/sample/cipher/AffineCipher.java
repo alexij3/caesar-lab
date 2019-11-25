@@ -2,8 +2,6 @@ package sample.cipher;
 
 import sample.Alphabet;
 
-import java.util.stream.Collectors;
-
 public class AffineCipher implements Cipher {
 
     private Alphabet alphabet;

@@ -18,5 +18,11 @@
         <fx:include source="affine.fxml" />
       </content>
     </Tab>
+      <Tab text="XOR (Gamma) Cipher">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <fx:include source="xor.fxml"/>
+        </content>
+      </Tab>
   </tabs>
 </TabPane>
