@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import sample.cipher.RSA;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RsaController {
+public class BBSController {
 
     private static final String alphabetChars = "abcdefghijklmnopqrstuvwxyz";
 
@@ -51,10 +52,7 @@ public class RsaController {
     private Spinner<Integer> qValue;
 
     @FXML
-    private Spinner<Integer> eValue;
-
-    @FXML
-    private Spinner<Integer> dValue;
+    private Spinner<Integer> xValue;
 
     @FXML
     private Button decryptFrequencyAnalysisBtn;
@@ -62,19 +60,15 @@ public class RsaController {
     @FXML
     private TextArea decryptedTextArea;
 
-    private RSA rsa;
-
     @FXML
     void decrypt(MouseEvent event) {
         Alphabet alphabet = new Alphabet('E', alphabetChars);
 
         int p = this.pValue.getValue();
         int q = this.qValue.getValue();
-        int e = this.eValue.getValue();
-        int d = this.dValue.getValue();
+        int x = this.xValue.getValue();
 
-        String decryptedMessage = rsa.decrypt(this.encryptedText.getText());
-        this.decryptedTextArea.setText(decryptedMessage);
+
     }
 
     @FXML
@@ -83,12 +77,9 @@ public class RsaController {
 
         int p = this.pValue.getValue();
         int q = this.qValue.getValue();
-        int e = this.eValue.getValue();
-        int d = this.dValue.getValue();
+        int x = this.xValue.getValue();
 
-        rsa = new RSA(new Alphabet('E', alphabetChars), q, p, e, d);
 
-        this.encryptedText.setText(rsa.encrypt(initialText));
 
         File file = this.fileChooser.showSaveDialog(openEncFileItem.getParentPopup().getScene().getWindow());
         if (file != null) {
@@ -125,20 +116,14 @@ public class RsaController {
                 this.qValue.increment(0); // won't change value, but will commit editor
             }
         });
-        this.eValue.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue) {
-                this.qValue.increment(0); // won't change value, but will commit editor
-            }
-        });
-        this.dValue.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        this.xValue.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 this.qValue.increment(0); // won't change value, but will commit editor
             }
         });
         this.pValue.getValueFactory().setValue(3);
         this.qValue.getValueFactory().setValue(11);
-        this.eValue.getValueFactory().setValue(7);
-        this.dValue.getValueFactory().setValue(3);
+        this.xValue.getValueFactory().setValue(7);
     }
 
     private void saveTextToFile(List<String> content, File file) {

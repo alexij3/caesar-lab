@@ -27,7 +27,7 @@ public class GammaCipher implements Cipher {
                 .mapToObj(index -> this.getEncryptedCharacterAsNumber(index, initialText.charAt(index), gamma))
                 .filter(num -> num > -1)
                 .map(String::valueOf)
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(", "));
     }
 
     private int getEncryptedCharacterAsNumber(int index, char character, List<Integer> gamma) {
@@ -48,7 +48,7 @@ public class GammaCipher implements Cipher {
         }
 
         for (int i = 0; i < length; i++) {
-            gamma.add(sequence.get(i) + sequence.get(i+1) % alphabet.getAlphabetChars().length());
+            gamma.add((sequence.get(i) + sequence.get(i+1)) % alphabet.getAlphabetChars().length());
         }
 
         return gamma;
@@ -56,7 +56,7 @@ public class GammaCipher implements Cipher {
 
     @Override
     public String decrypt(String encryptedText) {
-        String[] encryptedTextSplit = encryptedText.split(",");
+        String[] encryptedTextSplit = encryptedText.split(", ");
         List<Integer> gamma = generateGamma(this.key, encryptedTextSplit.length);
 
         StringBuilder decryptedText = new StringBuilder();
