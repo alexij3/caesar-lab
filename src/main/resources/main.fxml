@@ -21,7 +21,14 @@
       <Tab text="XOR (Gamma) Cipher">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-          <fx:include source="xor.fxml"/>
+          <fx:include source="xor.fxml" />
+        </content>
+      </Tab>
+      <Tab text="RSA Cipher">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <fx:include source="rsa.fxml" />
+
         </content>
       </Tab>
   </tabs>
