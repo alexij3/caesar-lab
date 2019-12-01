@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SdesController">
+   <children>
+      <TextArea fx:id="initialText" layoutX="38.0" layoutY="86.0" prefHeight="200.0" prefWidth="577.0" promptText="8 bit text" wrapText="true" />
+      <TextArea fx:id="encryptedText" layoutX="38.0" layoutY="389.0" prefHeight="200.0" prefWidth="577.0" wrapText="true" />
+      <Button fx:id="encryptBtn" layoutX="367.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#encryptText" prefHeight="31.0" prefWidth="194.0" text="Encrypt">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="decryptBtn" layoutX="218.0" layoutY="607.0" mnemonicParsing="false" onMouseClicked="#decrypt" prefHeight="31.0" prefWidth="183.0" text="Decrypt">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="85.0" layoutY="300.0" text="10-bit key">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="292.0" layoutY="44.0" text="Plain text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="262.0" layoutY="342.0" text="Encrypted text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="decryptedTextArea" layoutX="628.0" layoutY="86.0" prefHeight="200.0" prefWidth="577.0" wrapText="true" />
+      <Label layoutX="835.0" layoutY="42.0" text="Decrypted text">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="keyInput" layoutX="161.0" layoutY="298.0" />
+   </children>
+</Pane>

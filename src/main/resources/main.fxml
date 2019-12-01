@@ -37,5 +37,11 @@
           <fx:include source="bbs.fxml" />
         </content>
       </Tab>
+      <Tab text="SDES Cipher">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <fx:include source="sdes.fxml" />
+        </content>
+      </Tab>
   </tabs>
 </TabPane>
