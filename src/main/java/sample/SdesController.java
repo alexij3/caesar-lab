@@ -47,8 +47,7 @@ public class SdesController {
     void decrypt(MouseEvent event) {
         String key = this.keyInput.getText();
         SDES sdes = new SDES(Integer.parseInt(key, 2));
-        String decrypted = Integer.toBinaryString(sdes.decrypt(Integer.parseInt(this.encryptedText.getText(), 2)));
-        decrypted = decrypted.substring(decrypted.length() - 8, decrypted.length());
+        String decrypted = "" + (char) sdes.decrypt(this.encryptedText.getText().charAt(0));
         this.decryptedTextArea.setText(decrypted);
     }
 
@@ -56,8 +55,7 @@ public class SdesController {
     void encryptText(MouseEvent event) {
         String key = this.keyInput.getText();
         SDES sdes = new SDES(Integer.parseInt(key, 2));
-        String encrypted = Integer.toBinaryString(sdes.encrypt(Integer.parseInt(this.initialText.getText(), 2)));
-        encrypted = encrypted.substring(encrypted.length() - 8, encrypted.length());
+        String encrypted = "" + (char) sdes.encrypt(this.initialText.getText().charAt(0));
         this.encryptedText.setText(encrypted);
     }
 
